@@ -1,2 +1,2 @@
 # Project5
-Spring mvc Project
+Sample Spring mvc Project
