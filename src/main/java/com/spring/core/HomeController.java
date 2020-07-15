@@ -74,15 +74,16 @@ public class HomeController {
 
 	/**
 	 * Hibernate query
+	 * Employee.Vehicle
 	 */
 	@RequestMapping(value = "/get-vehicles", method = RequestMethod.GET)
 	@ResponseBody
-	public Vehicle getVehicles() {
+	public Vehicle getVehicles(@RequestParam int vehicleId) {
 
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 
-		Vehicle vehicle = session.get(Vehicle.class, 1);
+		Vehicle vehicle = session.get(Vehicle.class, vehicleId);
 		session.getTransaction().commit();
 		session.close();
 		return vehicle;
@@ -91,6 +92,7 @@ public class HomeController {
 
 	/**
 	 * Hibernate query
+	 * Employee.Vehicle
 	 */
 	@PostMapping(path = "/set-vehicles", consumes = "application/json", produces = "application/json")
 	public void addVehicle(@RequestBody Vehicle vehicle) {
@@ -107,6 +109,7 @@ public class HomeController {
 
 	/**
 	 * Hibernate query
+	 * Employee.User
 	 */
 
 	@PostMapping(path = "/set-user", consumes = "application/json", produces = "application/json")
@@ -128,14 +131,15 @@ public class HomeController {
 
 	/**
 	 * Hibernate query
+	 * Employee.User
 	 */
 	@RequestMapping(value = "/get-user", method = RequestMethod.GET)
 	@ResponseBody
-	public User getUser() {
+	public User getUser(@RequestParam int userId) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 
-		User user = session.get(User.class, 1);
+		User user = session.get(User.class, userId);
 		session.getTransaction().commit();
 		session.close();
 		return user;
@@ -143,6 +147,7 @@ public class HomeController {
 
 	/**
 	 * jdbcTemplate query
+	 * companyA.product_details
 	 */
 	@RequestMapping(value = "/get-products", method = RequestMethod.GET)
 	@ResponseBody
@@ -156,18 +161,21 @@ public class HomeController {
 
 	/**
 	 * jdbcTemplate query
+	 * companyA.product_details
 	 */
 	@RequestMapping(value = "/add-products", method = RequestMethod.POST)
 	@ResponseBody
 	public String addProducts(@RequestBody ProductDetails product) {
-		String query = "INSERT INTO product_details VALUES ('" + product.getPfunctionality() + "','"
-				+ product.getPname() + "');";
+		String query = "INSERT INTO product_details VALUES ('" + product.getId() + "','"
+				+ product.getPfunctionality() + "','" + product.getPname() + "');";
 		jdbcTemplate.execute(query);
-		return product.getPname() + " added succesfully!";
+		return "Product " + product.getPname() + " added succesfully!";
 	}
 
 	/**
 	 * Atomikos Distributed Txn
+	 * PersistenceUnitA
+	 * companya.EMPLOYEEA
 	 */
 
 	@RequestMapping(value = "/add-employee", method = RequestMethod.POST)
@@ -184,6 +192,8 @@ public class HomeController {
 
 	/**
 	 * JPA persistence entity mapping query
+	 * Eclipselink_JPA
+	 * jpadb.EMPLOYEETABLE
 	 */
 
 	@RequestMapping(value = "/insert-employee", method = RequestMethod.POST)
@@ -200,6 +210,8 @@ public class HomeController {
 
 	/**
 	 * JPA persistence entity mapping query
+	 * Eclipselink_JPA
+	 * jpadb.EMPLOYEETABLE
 	 */
 	@RequestMapping(value = "/find-employee", method = RequestMethod.GET)
 	@ResponseBody
@@ -216,6 +228,7 @@ public class HomeController {
 
 	/**
 	 * hbm.xml mapping file example
+	 * hbtutorial.Department
 	 */
 	@RequestMapping(value = "/add-dept", method = RequestMethod.POST)
 	@ResponseBody
