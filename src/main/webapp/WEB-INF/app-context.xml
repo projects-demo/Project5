@@ -15,11 +15,11 @@
 	<context:annotation-config />
 	<mvc:annotation-driven />
 	
-	<bean id="point2" class="com.spring.model.Point">
+<!--	<bean id="point2" class="com.spring.model.Point">
 		<property name="x" value="1" />
 		<property name="y" value="0" />
 	</bean>
-	
+-->	
 
 	<import resource="classpath:spring.xml" />
 
