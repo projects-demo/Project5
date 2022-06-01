@@ -1,0 +1,27 @@
+mvn clean install
+
+mysql -u root -p
+
+show databases;
+
+create database companya;
+create database companyb;
+
+use companya;
+CREATE TABLE EMPLOYEEA (
+    AGE varchar(255),
+    NAME varchar(255),
+    ID varchar(255)
+	);	
+	
+use companyb;
+CREATE TABLE EMPLOYEEB (
+    AGE varchar(255),
+    NAME varchar(255),
+    ID varchar(255)
+	);	
+	
+
+
+
+
