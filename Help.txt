@@ -6,6 +6,9 @@ show databases;
 
 create database companya;
 create database companyb;
+create database jpadb;
+create database employee;
+create database hbtutorial;
 
 use companya;
 CREATE TABLE EMPLOYEEA (
@@ -20,8 +23,13 @@ CREATE TABLE EMPLOYEEB (
     NAME varchar(255),
     ID varchar(255)
 	);	
+
+use hbtutorial;
+CREATE TABLE DEPARTMENT (
+    DEPT_NAME varchar(255),
+    ID varchar(255)
+	);	
 	
-
-
-
-
+DESCRIBE hbtutorial.DEPARTMENT;
+DESCRIBE hbtutorial.DEPARTMENT;
+SELECT * FROM hbtutorial.DEPARTMENT;
