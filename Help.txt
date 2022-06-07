@@ -1,3 +1,6 @@
+create c/springproject1
+copy files ..
+
 mvn clean install
 
 mysql -u root -p
@@ -33,3 +36,6 @@ CREATE TABLE DEPARTMENT (
 DESCRIBE hbtutorial.DEPARTMENT;
 DESCRIBE hbtutorial.DEPARTMENT;
 SELECT * FROM hbtutorial.DEPARTMENT;
+
+---------------
+
